@@ -9,17 +9,17 @@ async function upload()
 {
   const client = await getClient();
 
-  // ファイルを暗号化
+  // encrypt file
   const encrypted = await encryptFile();
   const tempFilePath = 'tmp-sample-image.png';
   fs.writeFileSync(tempFilePath, new Uint8Array(encrypted));
 
-  // 暗号化されたファイルをアップロード
+  // upload encrypted file
   const encryptedFile = await filesFromPaths([tempFilePath]);
   const cid = await client.uploadFile(encryptedFile[0]);
   console.log('cid', cid);
 
-  // 一時ファイルを削除
+  // clean up tmp file
   fs.unlinkSync(tempFilePath);
 }
 
@@ -34,7 +34,7 @@ async function getClient()
 }
 
 async function encryptFile() {
-  // 公開鍵
+  // Public keys
   const publicKeysArmored = [
     fs.readFileSync(process.env.PUBLIC_KEY1_PATH, 'utf8'),
     fs.readFileSync(process.env.PUBLIC_KEY2_PATH, 'utf8'),
@@ -43,7 +43,7 @@ async function encryptFile() {
     publicKeysArmored.map((armoredKey) => openpgp.readKey({ armoredKey }))
   );
 
-  // ファイルデータ
+  // File data
   const fileData = fs.readFileSync('sample_images/sample-image.png');
   const fileMessage = await openpgp.createMessage({ binary: fileData });
 
