@@ -3,7 +3,7 @@ You need some setup steps the first time you run it.
 
 ## Install
 You need Node version 18 or higher, with NPM version 7 or higher.<br>
-Additionally, you need the @web3-storage/w3cli package and some command line tools to run gpg commands.
+Additionally, you need the `@web3-storage/w3cli` package and some command line tools to run gpg commands.
 
 ```shell
 node --version && npm --version
