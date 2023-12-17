@@ -1,0 +1,17 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "upload": "node upload.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@web3-storage/w3up-client": "^11.2.1",
+    "dotenv": "^16.3.1",
+    "files-from-path": "^1.0.4",
+    "openpgp": "^5.11.0"
+  }
+}

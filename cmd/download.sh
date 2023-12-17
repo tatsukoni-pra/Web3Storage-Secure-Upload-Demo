@@ -1,0 +1,6 @@
+# bin/sh
+
+URL=$1
+DOWNLOAD_FILE_NAME=$2
+
+curl $URL -o $DOWNLOAD_FILE_NAME
